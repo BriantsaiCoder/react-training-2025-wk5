@@ -21,7 +21,19 @@ const SingleProduct = () => {
     };
     getProductById(id);
   }, [id]);
-
+const addCart = async (id, num) => {
+  const data = {
+    product_id: id,
+    qty: num,
+  };
+  try {
+    const url = `${API_BASE}/api/${API_PATH}/cart`;
+    const res = await axios.post(url, { data });
+    console.log(res.data);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
   return !product ? (
     <div>沒有可用的產品資料。</div>
   ) : (
@@ -43,7 +55,9 @@ const SingleProduct = () => {
           <p className='card-text'>
             <strong>現價:</strong> {product.price} 元
           </p>
-          <button className='btn btn-primary'>立即購買</button>
+          <button className='btn btn-primary' onClick={() => addCart(product.id, 1)}>
+            立即購買
+          </button>
         </div>
       </div>
     </div>
