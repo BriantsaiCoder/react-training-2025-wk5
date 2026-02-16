@@ -10,7 +10,7 @@ const SingleProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    const handleViewMore = async (id) => {
+    const getProductById = async (id) => {
       try {
         const res = await axios.get(`${API_BASE}/api/${API_PATH}/product/${id}`);
         setProduct(res.data.product);
@@ -19,7 +19,7 @@ const SingleProduct = () => {
         console.error('取得產品資料失敗', error);
       }
     };
-    handleViewMore(id);
+    getProductById(id);
   }, [id]);
 
   return !product ? (
