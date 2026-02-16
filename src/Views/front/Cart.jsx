@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { currency } from '../../Utils/filter';
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -98,7 +99,7 @@ const Cart = () => {
                   </span>
                 </div>
               </td>
-              <td className='text-end'>{cartItem.final_total}</td>
+              <td className='text-end'>{currency(cartItem.final_total)}</td>
             </tr>
           ))}
         </tbody>
@@ -107,7 +108,7 @@ const Cart = () => {
             <td className='text-end' colSpan='3'>
               總計
             </td>
-            <td className='text-end'>{cart.final_total}</td>
+            <td className='text-end'>{currency(cart.final_total)}</td>
           </tr>
         </tfoot>
       </table>
