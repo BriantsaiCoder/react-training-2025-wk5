@@ -31,3 +31,16 @@ img {
 .images {
   height: 150px;
 }
+
+.product-card-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
