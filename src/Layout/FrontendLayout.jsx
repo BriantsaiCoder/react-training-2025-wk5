@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router';
-const FrontendLayout = () => {
+function FrontendLayout() {
   return (
     <div>
       <header>
@@ -29,6 +29,6 @@ const FrontendLayout = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default FrontendLayout;

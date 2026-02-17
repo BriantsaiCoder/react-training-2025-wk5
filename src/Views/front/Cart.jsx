@@ -5,7 +5,7 @@ import { currency } from '../../Utils/filter';
 const API_BASE = import.meta.env.VITE_API_BASE;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
-const Cart = () => {
+function Cart() {
   const [cart, setCart] = useState([]);
   // 更新商品數量
   const updateCart = async (cartId, productId, qty = 1) => {
@@ -114,6 +114,6 @@ const Cart = () => {
       </table>
     </div>
   );
-};
+}
 
 export default Cart;

@@ -4,7 +4,7 @@ const API_PATH = import.meta.env.VITE_API_PATH;
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const SingleProduct = () => {
+function SingleProduct() {
   // const location = useLocation();
   // const product = location.state?.productData;
   const { id } = useParams();
@@ -21,19 +21,19 @@ const SingleProduct = () => {
     };
     getProductById(id);
   }, [id]);
-const addCart = async (id, num) => {
-  const data = {
-    product_id: id,
-    qty: num,
+  const addCart = async (id, num) => {
+    const data = {
+      product_id: id,
+      qty: num,
+    };
+    try {
+      const url = `${API_BASE}/api/${API_PATH}/cart`;
+      const res = await axios.post(url, { data });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
-  try {
-    const url = `${API_BASE}/api/${API_PATH}/cart`;
-    const res = await axios.post(url, { data });
-    console.log(res.data);
-  } catch (error) {
-    console.log(error.response.data);
-  }
-};
   return !product ? (
     <div>沒有可用的產品資料。</div>
   ) : (
@@ -62,5 +62,5 @@ const addCart = async (id, num) => {
       </div>
     </div>
   );
-};
+}
 export default SingleProduct;
